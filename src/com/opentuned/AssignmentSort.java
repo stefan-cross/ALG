@@ -13,31 +13,30 @@ public class AssignmentSort {
     public static void main(String args[]){
 
         // Set up our test data to be sorted
-        int[] testData = new int[10];
-
-        for(int i = 0; i < testData.length - 2; i++ ){
-            testData[i] = (int) (Math.random() * 10);
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        for(int i = 0; i < 5; i++ ){
+            arrayList.add(i, (int)(Math.random() * 10));
         }
-
-
-        System.out.println("Pre sort :" + testData.toString());
         
-        sort(testData);
         
-        System.out.println("Sorted :" + testData.toString());
+        System.out.println("Pre sort :" + arrayList.toString());
+        
+        sort(arrayList);
+        
+        System.out.println("Sorted :" + arrayList.toString());
         
     }
     
     // Overloaded sort method
     // Base definition takes a single integer array and calls sort with an arity of 3 vars
-    static void sort(int a[]){
-        sort(a, 0, a.length);
+    static void sort(ArrayList<Integer> a){
+        sort(a, 0, a.size());
     }
     
     // Invariant:
     // Pre condition:
     // Post condition:
-    static void sort(int a[] , int l, int r) {
+    static void sort(ArrayList<Integer> a , int l, int r) {
         
         // length of array to be sorted - 1
         int size = r - 1; //
@@ -52,10 +51,10 @@ public class AssignmentSort {
         // compare first to next, if first is greater
         //      swap a[l] and a[l + 1]
         else if (size == 2) {
-            if (a[l] > a[l + 1]) { // swap a[l] and a[l + 1] int tmp = a[l];
-                int tmp = a[l];
-                a[l] = a[l + 1];
-                a[l + 1] = tmp;
+            if (a.indexOf(l) > a.indexOf(l + 1)) { // swap a[l] and a[l + 1] int tmp = a[l];
+                int tmp = a.indexOf(l);
+                a.add(l, a.get(l + 1));
+                a.add(l + 1, tmp);
             }
 
         // Step 3
